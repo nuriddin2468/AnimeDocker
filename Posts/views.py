@@ -2,19 +2,16 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from Posts.models import AnimeModel, GenreModel
 from Posts.serializers import AnimeSerializer, GenreSerializer
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework import generics, permissions
 
 
 class AnimeViewSet(viewsets.ModelViewSet):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = (permissions.IsAuthenticated,)
     serializer_class = AnimeSerializer
     queryset = AnimeModel.objects.all()
 
 
 class GenreViewSet(viewsets.ModelViewSet):
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = (permissions.IsAuthenticated,)
     serializer_class = GenreSerializer
     queryset = GenreModel.objects.all()
