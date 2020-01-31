@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from Anime.models import AnimeModel, GenreModel
-from Anime.serializers import AnimeSerializer, GenreSerializer
+from Posts.models import AnimeModel, GenreModel
+from Posts.serializers import AnimeSerializer, GenreSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
