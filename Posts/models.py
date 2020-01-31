@@ -9,20 +9,19 @@ class GenreModel(models.Model):
 
 
 class AnimeModel(models.Model):
-    classification_choices = [
-        (0,  "Для всех"),
-        (12, "Для лиц старше 12 лет"),
-        (16, "Для лиц старше 16 лет"),
-        (18, "Для лиц старше 18 лет")
-    ]
-    title = models.CharField(max_length=120, verbose_name="Название Аниме")
-    title_orig = models.CharField(max_length=120, verbose_name="Оригинальное название Аниме")
-    text = models.TextField(verbose_name="Описание")
-    date = models.DateField(verbose_name="Дата выпуска")
-    genre = models.ManyToManyField(GenreModel, related_name="genre")
-    info = models.TextField(verbose_name="Прочая информация")
-    image = models.ImageField(verbose_name="Изображение 300x450")
-    classification = models.CharField(choices=classification_choices, default=classification_choices[0], max_length=50)
+    title = models.CharField(max_length=240, verbose_name="Название аниме")
+    description = models.TextField(max_length=10240, verbose_name="Описание")
+    image = models.URLField(verbose_name="Изображение")
+    studio = models.CharField(max_length=120, verbose_name="Студия", default=None)
+    translate = models.CharField(max_length=120, verbose_name="Перевод", default=None)
+    sound = models.CharField(max_length=120, verbose_name="Озвучивание", default=None)
+    author = models.CharField(max_length=120, verbose_name="Автор оригинала/Сценарист", default=None)
+    director = models.CharField(max_length=120, verbose_name="Режиссер", default=None)
+    date = models.CharField(max_length=120, verbose_name="Дата выпуска", default=None)
+    episodes = models.IntegerField(verbose_name="Количество серий", default=None)
+    genre = models.ManyToManyField(GenreModel, related_name="anime", verbose_name="Жанр", default=None)
+    country = models.CharField(max_length=120, verbose_name="Страна", default=None)
+    year = models.IntegerField(verbose_name="Год", default=None)
 
     def __str__(self):
         return self.title

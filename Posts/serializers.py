@@ -10,11 +10,10 @@ class GenreSerializer(serializers.ModelSerializer):
 
 class AnimeSerializer(serializers.ModelSerializer):
     genre = GenreSerializer(many=True)
-    classification = serializers.ChoiceField(choices=AnimeModel.classification_choices)
 
     class Meta:
         model = AnimeModel
-        fields = ('id', 'title', 'title_orig', 'text', 'date', 'info', 'image', 'genre', 'classification')
+        fields = ["__all__"]
 
 
 
