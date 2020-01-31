@@ -20,7 +20,8 @@ class AnimeSerializer(serializers.ModelSerializer):
         genres = validated_data.pop('genre_test')
         post = AnimeModel.objects.create(**validated_data)
         for genre in genres:
-            GenreModel.object.create(**genre, anime=post)
+            x = GenreModel.objects.get(title=genre['title'])
+            post.genre.add(x)
         return post
 
 
