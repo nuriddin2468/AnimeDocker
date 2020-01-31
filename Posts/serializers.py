@@ -3,9 +3,10 @@ from Posts.models import AnimeModel, GenreModel
 
 
 class GenreSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(required=False)
     class Meta:
         model = GenreModel
-        fields = ('title',)
+        fields = ('id' ,'title',)
 
 
 class AnimeSerializer(serializers.ModelSerializer):
@@ -13,7 +14,7 @@ class AnimeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = AnimeModel
-        fields = ['title', 'description', 'image', 'studio', 'translate', 'sound', 'author', 'director', 'date', 'episodes', 'genre_test', 'country', 'year']
+        fields = ['id','title', 'description', 'image', 'studio', 'translate', 'sound', 'author', 'director', 'date', 'episodes', 'genre_test', 'country', 'year']
 
 
 
