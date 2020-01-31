@@ -26,7 +26,7 @@ router.register(r'genre', anim.GenreViewSet, basename="genre")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', csrf_exempt(include(router.urls))),
+    path('', include(router.urls)),
     path(r'api-auth/', include('rest_framework.urls', namespace="rest-framework")),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
 ]
