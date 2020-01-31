@@ -13,7 +13,7 @@ class AnimeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = AnimeModel
-        fields = ["__all__"]
+        fields = ['title', 'description', 'image', 'studio', 'translate', 'sound', 'author', 'director', 'date', 'episodes', 'genre', 'country', 'year']
 
 
 
