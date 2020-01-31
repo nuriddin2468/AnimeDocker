@@ -14,7 +14,13 @@ class AnimeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = AnimeModel
-        fields = ['id','title', 'description', 'image', 'studio', 'translate', 'sound', 'author', 'director', 'date', 'episodes', 'genre_test', 'country', 'year']
+        fields = ['id', 'title', 'description', 'image', 'studio', 'translate', 'sound', 'author', 'director', 'date', 'episodes', 'genre_test', 'country', 'year']
 
+    def create(self, validated_data):
+        genres = validated_data.pop('genre_test')
+        post = AnimeModel.objects.create(**validated_data)
+        for genre in genres:
+            GenreModel.object.create(**genre, anime=post)
+        return post
 
 
