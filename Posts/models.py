@@ -19,7 +19,7 @@ class AnimeModel(models.Model):
     director = models.CharField(max_length=240, verbose_name="Режиссер", default=None)
     date = models.CharField(max_length=240, verbose_name="Дата выпуска", default=None)
     episodes = models.IntegerField(verbose_name="Количество серий", default=None)
-    genre = models.ManyToManyField(GenreModel, related_name="anime", verbose_name="Жанр", default=None)
+    genre = models.ManyToManyField(GenreModel, related_name="anime", verbose_name="Жанр", blank=True)
     country = models.CharField(max_length=240, verbose_name="Страна", default=None)
     year = models.IntegerField(verbose_name="Год", default=None)
 
