@@ -9,7 +9,7 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class AnimeSerializer(serializers.ModelSerializer):
-    genre = GenreSerializer(many=True, source='title')
+    genre_test = GenreSerializer(many=True, source='genre')
 
     class Meta:
         model = AnimeModel
