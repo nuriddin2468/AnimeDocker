@@ -9,11 +9,11 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class AnimeSerializer(serializers.ModelSerializer):
-    genre_test = GenreSerializer(many=True, source='genre')
+    genre_test = GenreSerializer(many=True, read_only=False, queryset=GenreModel.objects.all(), source='genre')
 
     class Meta:
         model = AnimeModel
-        fields = ['title', 'description', 'image', 'studio', 'translate', 'sound', 'author', 'director', 'date', 'episodes', 'genre', 'country', 'year']
+        fields = ['title', 'description', 'image', 'studio', 'translate', 'sound', 'author', 'director', 'date', 'episodes', 'genre_test', 'country', 'year']
 
 
 
