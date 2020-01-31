@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'Posts'
 ]
 
 MIDDLEWARE = [
@@ -78,8 +80,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'df8j1chplia6c6',
         'USER': 'bucwppxmntszxo',
+        'PASSWORD': 'bc3abb6a504cd518ef1196cf4778ddb1a6354b1e6122d9aec8ae55943bb1882b',
         'HOST': 'ec2-54-225-113-7.compute-1.amazonaws.com',
-        'PORT': 5432,
+        'PORT': '5432',
     }
 }
 
