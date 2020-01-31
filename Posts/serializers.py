@@ -22,6 +22,7 @@ class AnimeSerializer(serializers.ModelSerializer):
         for genre in genres:
             x = GenreModel.objects.get(title=genre['title'])
             post.genre.add(x)
+        post.save()
         return post
 
 
