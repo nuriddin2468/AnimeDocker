@@ -6,19 +6,20 @@ class GenreSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(required=False)
     class Meta:
         model = GenreModel
-        fields = ('id' ,'title',)
+        fields = ('id', 'title',)
 
 
 class AnimeSerializer(serializers.ModelSerializer):
-    genre_test = GenreSerializer(many=True, read_only=False, source='genre', required=False)
-    
+    genre = GenreSerializer(many=True, read_only=False, source='genre', required=False)
+
     class Meta:
         model = AnimeModel
-        fields = ['id', 'title', 'description', 'image', 'studio', 'translate', 'sound', 'author', 'director', 'date', 'episodes', 'genre_test', 'country', 'year']
+        fields = ['id', 'title', 'description', 'image', 'studio', 'translate', 'sound', 'author', 'director', 'date', 'episodes', 'genre', 'country', 'year']
 
     def create(self, validated_data):
-        genres = validated_data.pop('genre_test')
+        genres = validated_data.pop('genre')
         print(genres)
+        print(validated_data)
         post = AnimeModel.objects.create(**validated_data)
         for genre in genres:
             x = GenreModel.objects.get(title=genre['title'])
