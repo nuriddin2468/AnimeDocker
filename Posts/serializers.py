@@ -18,10 +18,16 @@ class AnimeSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         genres = validated_data.pop('genre')
-        print(genres)
-        print(validated_data)
         post = AnimeModel.objects.create(**validated_data)
         for genre in genres:
+            try:
+                print("1", genre['title'])
+            except Exception:
+                pass
+            try:
+                print("2", genre.title)
+            except Exception:
+                pass
             x = GenreModel.objects.get(title=genre['title'])
             post.genre.add(x)
         post.save()
